@@ -1,4 +1,4 @@
-resource "google_compute_instance" "instance" {
+resource "google_compute_instance" "web_instance" {
   count         = var.instance_count
   project =       var.project_name
   name           = "${var.instance_name_region_prefix}-${var.instance_name}-0${count.index+1}"
@@ -23,4 +23,16 @@ service_account {
     email  = var.developer_service_account_email
     scopes = ["cloud-platform"]
   }
+}
+resource "google_compute_disk" "data_disk" {
+  name = "data-disk"
+  size = 50 
+  
+  type = "pd-ssd"
+}
+resource "google_compute_instance_attach_disk" "web_instance_disk" {
+  instance_id   = google_compute_instance.web_instance.id
+  disk          = google_compute_disk.data_disk.name
+  device_name   = "data-device-name" 
+  mode          = "READ_WRITE"           
 }
