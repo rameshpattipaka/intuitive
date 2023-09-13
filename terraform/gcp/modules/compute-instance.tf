@@ -36,3 +36,9 @@ resource "google_compute_instance_attach_disk" "web_instance_disk" {
   device_name   = "data-device-name" 
   mode          = "READ_WRITE"           
 }
+resource "google_compute_instance_attachment" "nic_attachment" {
+  count = var.nic_count
+
+  instance_name      = google_compute_instance.web_instance[count.index].name
+  network_interface = google_compute_network_interface.sample_nic[count.index].name
+}
