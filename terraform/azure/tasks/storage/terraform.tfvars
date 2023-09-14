@@ -1,0 +1,5 @@
+resource_group_name = "intuitive-group"
+location = "west us"
+storage_account_name = "intuive-storage"
+account_tier = "standard"
+account_replication_type = "LRS"
