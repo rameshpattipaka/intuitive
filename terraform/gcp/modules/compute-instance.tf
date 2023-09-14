@@ -25,20 +25,18 @@ service_account {
   }
 }
 resource "google_compute_disk" "data_disk" {
-  name = "data-disk"
-  size = 50 
+  name = var.data_disk_name
+  size = var.persistant_disk_size
   
-  type = "pd-ssd"
+  type = var.persistant_disk_type
 }
 resource "google_compute_instance_attach_disk" "web_instance_disk" {
   instance_id   = google_compute_instance.web_instance.id
   disk          = google_compute_disk.data_disk.name
-  device_name   = "data-device-name" 
-  mode          = "READ_WRITE"           
+  mode          = var.disk_mode          
 }
 resource "google_compute_instance_attachment" "nic_attachment" {
   count = var.nic_count
-
   instance_name      = google_compute_instance.web_instance[count.index].name
   network_interface = google_compute_network_interface.sample_nic[count.index].name
 }
