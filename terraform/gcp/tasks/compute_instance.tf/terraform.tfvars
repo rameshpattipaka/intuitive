@@ -1,0 +1,20 @@
+project_name                     = "intuitive-poc"
+instance_name                    = "web_server"
+instance_name_region_prefix      = "uw2"
+gcp_region                       = "us-west2"
+machine_type                     = "e2-standard-32"
+instance_label                   = {
+                                  environment    = "dev"
+                                  service        = "lab"
+                                  client         = "intuitive"
+                                    }
+network                          = "default"
+subnetwork                       = "default" 
+instance_count                   = "2"
+developer_service_account_email  = "123456789-compute@developer.gserviceaccount.com"
+del_protect = "enable"
+data_disk_name = "data_disk"
+persistant_disk_size = 25
+persistant_disk_type = "pd-ssd"
+disk_mode = "READ-WRITE"
+nic_count = 2
