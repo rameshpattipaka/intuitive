@@ -1,5 +1,5 @@
 resource "google_compute_network" "sample_vpc" {
-  name = "intuitive-vpc"
+  name = var.vpc_name
 }
 
 
