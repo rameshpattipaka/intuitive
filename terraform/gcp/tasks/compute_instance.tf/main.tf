@@ -1,0 +1,20 @@
+module "intuitive-vm-gcp" {
+  source = "../../modules/compute_instance"
+  network = var.network
+  subnetwork =  var.subnetwork
+  project_name =  var.project_name
+  instance_name   = var.instance_name
+  instance_name_region_prefix  = var.instance_name_region_prefix
+  machine_type     = var.machine_type
+  instance_label  = var.instance_label
+  instance_count   = var.instance_count
+  del_protect  = var.del_protect  
+  developer_service_account_email   = var.developer_service_account_email
+  zone = var.zone
+  instance_label = var.instance_label
+  data_disk_name = var.data_disk_name
+  persistant_disk_size = var.persistant_disk_size
+  persistant_disk_type = var.persistant_disk_type
+  disk_mode = var.disk_mode
+  nic_count = var.nic_count
+}
